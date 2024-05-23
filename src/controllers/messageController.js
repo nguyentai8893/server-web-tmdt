@@ -1,5 +1,5 @@
 const Message = require('../model/Message');
-const Rooms = require('../model/rooms');
+const Rooms = require('../model/Rooms');
 
 const getMessage = async (req, res) => {
 	const { roomId } = req.query;

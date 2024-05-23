@@ -7,7 +7,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const multer = require('multer');
-const PORT = 8000;
+// const PORT = 8000;
 const http = require('http');
 const { setupSocket } = require('./socket');
 // const { Server } = require('socket.io');
@@ -66,7 +66,7 @@ app.use((err, req, res, next) => {
 });
 db.connect()
 	.then(() => {
-		server.listen(process.env.PORT, () => {
+		server.listen(process.env.PORT || 8000, () => {
 			console.log(`app runing on port ${PORT}`);
 		});
 	})
