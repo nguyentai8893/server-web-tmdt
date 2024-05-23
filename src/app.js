@@ -66,7 +66,7 @@ app.use((err, req, res, next) => {
 });
 db.connect()
 	.then(() => {
-		server.listen(PORT, () => {
+		server.listen(process.env.PORT, () => {
 			console.log(`app runing on port ${PORT}`);
 		});
 	})
