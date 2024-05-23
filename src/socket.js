@@ -1,6 +1,6 @@
 const socketIo = require('socket.io');
 const Message = require('./model/Message');
-const Rooms = require('./model/rooms');
+const Rooms = require('./model/Rooms');
 function setupSocket(server) {
 	const io = socketIo(server, {
 		cors: {
