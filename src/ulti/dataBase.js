@@ -12,11 +12,11 @@ async function connect() {
 	//LzIvbyd711vsJSyQ
 	//FiocogoFiCmy6OhN:nodeexxp
 	// const uri = `mongodb+srv://nguyenvantai566:LzIvbyd711vsJSyQ@cluster0.rfhibt5.mongodb.net/`;
-	const uri = `mongodb+srv://nguyenvantai566:FiocogoFiCmy6OhN@cluster0.fyheja6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
-	const client = new MongoClient(uri);
+	// const uri = `mongodb+srv://nguyenvantai566:FiocogoFiCmy6OhN@cluster0.fyheja6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+	// const client = new MongoClient(uri);
 	try {
 		await mongoose.connect(
-			`mongodb+srv://nguyenvantai566:FiocogoFiCmy6OhN@cluster0.fyheja6.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`,
+			`mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@cluster0.fyheja6.mongodb.net/${MONGO_DATABASE}`,
 			{}
 		);
 		// await mongoose.connect(uri);
