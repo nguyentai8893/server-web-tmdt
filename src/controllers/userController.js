@@ -126,14 +126,18 @@ const login = async (req, res, next) => {
 			});
 		}
 
-		// Nếu đăng nhập thành công, thêm cookie
-		// Tạo cookie với các thuộc tính
-		// res.cookie('token', token, {
-		// 	httpOnly: false,
-		// 	secure: process.env.NODE_ENV === 'production', // Chỉ gửi cookie qua HTTPS khi ở môi trường production
-		// 	sameSite: 'Strict', // Đảm bảo cookie chỉ được gửi trong cùng một trang web
-		// });
+		// Tạo một token (ví dụ: sử dụng JWT) và lưu vào cookie
+		const token = jwt.sign({ userId: user._id }, 'your-secret-key', {
+			expiresIn: '5h',
+		});
+		res.cookie('token', token, {
+			httpOnly: false, // Cho phép truy cập cookie từ mã JavaScript trên frontend
+			secure: process.env.NODE_ENV === 'production', // Chỉ gửi cookie qua HTTPS khi ở môi trường production
+			sameSite: 'Strict', // Đảm bảo cookie chỉ được gửi trong cùng một trang web
+			maxAge: 36000000,
+		});
 
+		// Lưu thông tin người dùng vào session
 		req.session.user = {
 			userId: user._id,
 			email: user.email,
