@@ -4,7 +4,7 @@ const Rooms = require('./model/Rooms');
 function setupSocket(server) {
 	const io = socketIo(server, {
 		cors: {
-			origin: ['https://admin-app-tmdt.vercel.app', 'http://localhost:3001'], // Replace with the appropriate port of your client-app
+			origin: '*', // Replace with the appropriate port of your client-app
 			methods: ['GET', 'POST'],
 		},
 	});
