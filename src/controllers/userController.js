@@ -128,7 +128,12 @@ const login = async (req, res, next) => {
 
 		// Nếu đăng nhập thành công, thêm cookie
 		// Tạo cookie với các thuộc tính
-		res.cookie('user', user._id, { expires: 7, secure: true });
+		res.cookie('token', token, {
+			httpOnly: true,
+			secure: process.env.NODE_ENV === 'product', // Chỉ gửi cookie qua HTTPS khi ở môi trường production
+			sameSite: 'Strict', // Đảm bảo cookie chỉ được gửi trong cùng một trang web
+		});
+
 		req.session.user = {
 			userId: user._id,
 			email: user.email,
