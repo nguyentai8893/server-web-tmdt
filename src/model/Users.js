@@ -1,4 +1,5 @@
 const mongose = require('mongoose');
+const { ROLES } = require('../config/global.enum');
 const Schema = mongose.Schema;
 
 const userSchema = new Schema(
@@ -9,8 +10,8 @@ const userSchema = new Schema(
 		email: { type: String, require: true, unique: true },
 		role: {
 			type: String,
-			enum: ['guest', 'advisor', 'admin'], // Định nghĩa các giá trị cho vai trò
-			default: 'guest', // Mặc định vai trò là guest
+			enum: Object.values(ROLES), // Định nghĩa các giá trị cho vai trò
+			default: ROLES.GUEST, // Mặc định vai trò là guest
 		},
 	},
 	{ timestamps: true }
