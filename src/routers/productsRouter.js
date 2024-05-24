@@ -3,6 +3,7 @@ const router = express.Router();
 const productController = require('../controllers/productController');
 const { authenticate, authorize } = require('../Middleware/authenticate');
 const upload = require('../Middleware/uploadMiddleware');
+const { ROLES } = require('../config/global.enum');
 
 router.post('/api/add-cart', authenticate, productController.addCart);
 router.get('/api/get-cart', authenticate, productController.getCart);
