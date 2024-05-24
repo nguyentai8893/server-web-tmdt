@@ -182,7 +182,7 @@ const uploadImage = async (req, res) => {
 	req.files.forEach((file, index) => {
 		imageUrls[`image${index + 1}`] = file.path.replace(
 			'src\\',
-			'http://localhost:8000/'
+			'https://server-web-tmdt-0d81a84104bb.herokuapp.com'
 		);
 	});
 	res.status(200).json({ filesPath: imageUrls });

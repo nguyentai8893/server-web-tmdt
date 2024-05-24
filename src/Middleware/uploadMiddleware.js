@@ -2,7 +2,7 @@ const multer = require('multer');
 const path = require('path');
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
-		cb(null, path.join('./src/public/uploads'));
+		cb(null, path.join('src/public/uploads'));
 	},
 	filename: function (req, file, cb) {
 		// Tên file mới được tạo ra, bao gồm thời gian và phần mở rộng của file gốc
