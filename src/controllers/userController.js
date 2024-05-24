@@ -145,7 +145,7 @@ const login = async (req, res, next) => {
 			message: 'Đăng nhập thành công',
 		});
 	} catch (error) {
-		return res.status(500).json({ message: 'server error !' });
+		return res.status(500).json({ message: `server error ${error} !` });
 	}
 };
 const getAllUser = async (req, res) => {
