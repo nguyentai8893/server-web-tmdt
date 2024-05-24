@@ -132,13 +132,20 @@ const login = async (req, res, next) => {
 		const token = jwt.sign({ userId: user._id }, 'your-secret-key', {
 			expiresIn: '5h',
 		});
-		res.cookie('token', token, {
-			httpOnly: false, // Cho phép truy cập cookie từ mã JavaScript trên frontend
-			secure: process.env.NODE_ENV === 'production', // Chỉ gửi cookie qua HTTPS khi ở môi trường production
-			sameSite: 'Strict', // Đảm bảo cookie chỉ được gửi trong cùng một trang web
-			maxAge: 36000000,
-		});
-
+		res.cookie(
+			'userData',
+			{
+				userId: user._id,
+				username: user.userName,
+				role: user.role,
+			},
+			{
+				httpOnly: true,
+				maxAge: 24 * 60 * 60 * 1000, // 1 day
+				secure: process.env.NODE_ENV === 'production' ? true : false,
+				sameSite: 'strict',
+			}
+		);
 		// Lưu thông tin người dùng vào session
 		req.session.user = {
 			userId: user._id,
