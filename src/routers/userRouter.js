@@ -10,12 +10,12 @@ router.post('/api/admin-register', userController.superAdmin);
 router.post('/api/login', userController.login);
 router.post(
 	'/api/edit-user/:id',
-	authorize(ROLES.ADMIN),
+	authorize([ROLES.ADMIN]),
 	userController.editUser
 );
 router.get(
 	'/api/get-user-client',
-	authorize(ROLES.ADMIN),
+	authorize([ROLES.ADMIN]),
 	userController.getAllUser
 );
 

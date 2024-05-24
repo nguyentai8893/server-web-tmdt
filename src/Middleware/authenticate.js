@@ -7,10 +7,10 @@ const authenticate = async (req, res, next) => {
 };
 
 // Middleware để phân quyền dựa trên session
-function authorize(role) {
+function authorize(roles) {
 	return function (req, res, next) {
 		const user = req.cookies.user;
-		if (!user || user.role !== role) {
+		if (!user || !roles?.includes(user.role)) {
 			return res.status(403).json({ message: 'Bạn không có quyền truy cập' });
 		}
 		next();
