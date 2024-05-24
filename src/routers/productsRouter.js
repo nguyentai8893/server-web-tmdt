@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const productController = require('../controllers/productController');
-const { authenticate } = require('../Middleware/authenticate');
+const { authenticate, authorize } = require('../Middleware/authenticate');
 const upload = require('../Middleware/uploadMiddleware');
 
 router.post('/api/add-cart', authenticate, productController.addCart);
