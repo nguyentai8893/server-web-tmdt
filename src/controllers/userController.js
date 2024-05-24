@@ -143,7 +143,6 @@ const login = async (req, res, next) => {
 				httpOnly: true,
 				maxAge: 24 * 60 * 60 * 1000, // 1 day
 				secure: process.env.NODE_ENV === 'production' ? true : false,
-				sameSite: 'strict',
 			}
 		);
 		// Lưu thông tin người dùng vào session
