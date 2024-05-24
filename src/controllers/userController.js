@@ -114,6 +114,8 @@ const register = async (req, res, next) => {
 	}
 };
 const login = async (req, res, next) => {
+	console.log('Request received at /api/login');
+	console.log('Request body:', req.body);
 	try {
 		const { email, password } = req.body;
 		const user = await User.findOne({ email: email });
