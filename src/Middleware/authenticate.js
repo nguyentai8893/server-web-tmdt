@@ -1,4 +1,5 @@
 const authenticate = async (req, res, next) => {
+	console.log('req', req.cookies);
 	if (!req.cookies.j) {
 		return res.json({ status: false, msg: 'k có cookie' });
 	}
