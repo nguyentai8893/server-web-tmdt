@@ -128,7 +128,7 @@ const login = async (req, res, next) => {
 
 		// Nếu đăng nhập thành công, thêm cookie
 		// Tạo cookie với các thuộc tính
-		res.cookie('user', user._id, { maxAge: 9000000, httpOnly: true });
+		res.cookie('user', user._id, { expires: 7, secure: true });
 		req.session.user = {
 			userId: user._id,
 			email: user.email,
