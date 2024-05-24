@@ -29,7 +29,11 @@ app.use(express.json()); // Middleware để phân tích dữ liệu JSON
 app.use(express.urlencoded({ extended: true })); // Middleware để phân tích dữ liệu được mã hóa trong URL
 app.use(morgan('combined', { stream: accessLogStream }));
 
-app.use(cors());
+app.use(
+	cors({
+		origin: 'https://admin-app-tmdt.vercel.app/',
+	})
+);
 
 app.use(
 	session({
