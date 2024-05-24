@@ -4,14 +4,6 @@ const authenticate = async (req, res, next) => {
 	}
 	next();
 };
-// Middleware để kiểm tra và phân quyền dựa trên cookie
-const authenticated = async (req, res, next) => {
-	if (!req.cookies.user) {
-		return res.json({ status: false, msg: 'Không có cookie' });
-	}
-	// Nếu cookie tồn tại, tiếp tục xử lý yêu cầu
-	next();
-};
 
 // Middleware để phân quyền dựa trên session
 function authorize(role) {
@@ -23,4 +15,4 @@ function authorize(role) {
 		next();
 	};
 }
-module.exports = { authenticate, authorize, authenticated };
+module.exports = { authenticate, authorize };
