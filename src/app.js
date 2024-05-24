@@ -31,7 +31,9 @@ app.use(morgan('combined', { stream: accessLogStream }));
 
 app.use(
 	cors({
-		origin: 'https://admin-app-tmdt.vercel.app/',
+		origin: '*', // Mở CORS cho tất cả các nguồn
+		methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+		allowedHeaders: ['Content-Type', 'Authorization'],
 	})
 );
 
