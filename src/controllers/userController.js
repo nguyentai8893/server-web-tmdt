@@ -129,7 +129,7 @@ const login = async (req, res, next) => {
 		// Nếu đăng nhập thành công, thêm cookie
 		// Tạo cookie với các thuộc tính
 		res.cookie('token', token, {
-			httpOnly: true,
+			httpOnly: false,
 			secure: process.env.NODE_ENV === 'production', // Chỉ gửi cookie qua HTTPS khi ở môi trường production
 			sameSite: 'Strict', // Đảm bảo cookie chỉ được gửi trong cùng một trang web
 		});

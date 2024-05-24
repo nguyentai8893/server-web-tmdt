@@ -31,10 +31,10 @@ app.use(morgan('combined', { stream: accessLogStream }));
 
 app.use(
 	cors({
-		origin: 'https://admin-app-tmdt.vercel.app', // Thay thế bằng URL của Vercel
+		origin: 'https://admin-app-tmdt.vercel.app',
 		methods: ['GET', 'POST', 'PUT', 'DELETE'],
 		allowedHeaders: ['Content-Type', 'Authorization'],
-		credentials: true, // Cho phép chia sẻ thông tin xác thực
+		credentials: true,
 	})
 );
 
@@ -44,8 +44,8 @@ app.use(
 		resave: false,
 		saveUninitialized: false,
 		cookie: {
-			secure: false, // Set true nếu sử dụng HTTPS
-			httpOnly: true, // Cookie chỉ được truy cập thông qua HTTP, không qua JavaScript
+			secure: true, // Set true nếu sử dụng HTTPS
+			httpOnly: false, // Cookie chỉ được truy cập thông qua HTTP, không qua JavaScript
 			maxAge: 24 * 60 * 60 * 1000, // Thời gian sống của cookie, ở đây là 1 ngày
 		},
 	})
