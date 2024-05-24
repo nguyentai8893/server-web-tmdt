@@ -133,10 +133,10 @@ const login = async (req, res, next) => {
 			expiresIn: '5h',
 		});
 		res.cookie(
-			'userData',
+			'user',
 			{
 				userId: user._id,
-				username: user.userName,
+				email: user.email,
 				role: user.role,
 			},
 			{
