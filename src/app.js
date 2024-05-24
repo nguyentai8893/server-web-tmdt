@@ -25,8 +25,8 @@ setupSocket(server);
 
 // const authenticate = require('./Middleware/authenticate');
 
-app.use(express.json({ limit: '50mb' })); // Middleware để phân tích dữ liệu JSON
-app.use(express.urlencoded({ extended: true, limit: '50mb' })); // Middleware để phân tích dữ liệu được mã hóa trong URL
+app.use(express.json()); // Middleware để phân tích dữ liệu JSON
+app.use(express.urlencoded({ extended: true })); // Middleware để phân tích dữ liệu được mã hóa trong URL
 app.use(morgan('combined', { stream: accessLogStream }));
 
 app.use(
