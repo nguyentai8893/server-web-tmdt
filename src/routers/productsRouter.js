@@ -9,27 +9,52 @@ router.post('/api/add-cart', authenticate, productController.addCart);
 router.get('/api/get-cart', authenticate, productController.getCart);
 
 router.post('/api/order-product', authenticate, productController.orderProduct);
-router.use(authorize([ROLES.ADMIN]));
+// router.use(authorize([ROLES.ADMIN]));
 router.post(
 	'/api/update-product',
 	authenticate,
+	authorize([ROLES.ADMIN]),
 	productController.updateProductCart
 );
-router.post('/api/add-product', productController.createProduct);
+router.post(
+	'/api/add-product',
+	authorize([ROLES.ADMIN]),
+	productController.createProduct
+);
 router.post(
 	'/api/upload-image',
+	authorize([ROLES.ADMIN]),
 	upload.array('images', [5]),
 	productController.uploadImage
 );
-router.post('/api/update-product/:id', productController.updateProduct);
+router.post(
+	'/api/update-product/:id',
+	authorize([ROLES.ADMIN]),
+	authorize([ROLES.ADMIN]),
+	productController.updateProduct
+);
 router.delete(
 	'/api/delete-product/:id',
 	authenticate,
 	productController.deleteProductCart
 );
-router.post('/api/delete-product', productController.deleteProduct);
+router.post(
+	'/api/delete-product',
+	authorize([ROLES.ADMIN]),
+	productController.deleteProduct
+);
 
-router.get('/api/products', authenticate, productController.getProducts);
-router.get('/api/get-order', authenticate, productController.getOrder);
+router.get(
+	'/api/products',
+	authorize([ROLES.ADMIN]),
+	authenticate,
+	productController.getProducts
+);
+router.get(
+	'/api/get-order',
+	authorize([ROLES.ADMIN]),
+	authenticate,
+	productController.getOrder
+);
 
 module.exports = router;
