@@ -9,7 +9,6 @@ const session = require('express-session');
 const multer = require('multer');
 const http = require('http');
 const { setupSocket } = require('./socket');
-// const { Server } = require('socket.io');
 const userRouter = require('./routers/userRouter');
 const productsRouter = require('./routers/productsRouter');
 const messageRouter = require('./routers/messageRouter');
@@ -20,10 +19,8 @@ const accessLogStream = fs.createWriteStream(
 	{ flags: 'a' }
 );
 const server = http.createServer(app);
-// const io = new Server(server);
-setupSocket(server);
 
-// const authenticate = require('./Middleware/authenticate');
+setupSocket(server);
 
 app.use(express.json()); // Middleware để phân tích dữ liệu JSON
 app.use(express.urlencoded({ extended: true })); // Middleware để phân tích dữ liệu được mã hóa trong URL

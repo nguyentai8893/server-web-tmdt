@@ -6,7 +6,7 @@ const authenticate = async (req, res, next) => {
 	next();
 };
 
-// Middleware để phân quyền dựa trên session
+// Middleware để phân quyền dựa trên cookie
 function authorize(roles) {
 	return function (req, res, next) {
 		const user = req.cookies.user;
