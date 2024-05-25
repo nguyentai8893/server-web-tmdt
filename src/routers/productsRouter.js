@@ -44,12 +44,7 @@ router.post(
 	productController.deleteProduct
 );
 
-router.get(
-	'/api/products',
-	authorize([ROLES.ADMIN]),
-	authenticate,
-	productController.getProducts
-);
+router.get('/api/products', authenticate, productController.getProducts);
 router.get(
 	'/api/get-order',
 	authorize([ROLES.ADMIN]),
