@@ -45,5 +45,6 @@ router.post(
 
 router.get('/api/products', authenticate, productController.getProducts);
 router.get('/api/get-order', authenticate, productController.getOrder);
+router.get('/api/get-orders', authenticate, productController.getOrders);
 
 module.exports = router;

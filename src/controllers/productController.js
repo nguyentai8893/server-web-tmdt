@@ -149,6 +149,10 @@ const getOrder = async (req, res, next) => {
 	const order = await Order.find({ 'customer.idUser': userId });
 	return res.json({ status: 200, order });
 };
+const getOrders = async (req, res, next) => {
+	const order = await Order.find();
+	return res.json({ status: 200, order });
+};
 const createProduct = async (req, res) => {
 	try {
 		console.log('ok', req.body);
@@ -236,4 +240,5 @@ module.exports = {
 	uploadImage,
 	deleteProduct,
 	updateProduct,
+	getOrders,
 };
