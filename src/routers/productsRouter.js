@@ -8,7 +8,7 @@ const { ROLES } = require('../config/global.enum');
 router.post('/api/add-cart', authenticate, productController.addCart);
 router.get('/api/get-cart', authenticate, productController.getCart);
 
-router.use(authorize([ROLES.ADMIN]));
+// router.use(authorize([ROLES.ADMIN]));
 router.post('/api/order-product', authenticate, productController.orderProduct);
 router.post(
 	'/api/update-product',
