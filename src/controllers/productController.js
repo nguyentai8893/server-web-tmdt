@@ -117,7 +117,6 @@ const orderProduct = async (req, res, next) => {
 			console.log(productInStock);
 
 			if (!productInStock) {
-				console.log('hákhfjsf');
 			}
 			if (productInStock.quantity < product.quantity) {
 				console.log(' k đủ sl');

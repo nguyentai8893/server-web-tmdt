@@ -7,7 +7,6 @@ const { ROLES } = require('../config/global.enum');
 
 router.post('/api/add-cart', authenticate, productController.addCart);
 router.get('/api/get-cart', authenticate, productController.getCart);
-
 router.post('/api/order-product', authenticate, productController.orderProduct);
 // router.use(authorize([ROLES.ADMIN]));
 router.post(
@@ -45,11 +44,6 @@ router.post(
 );
 
 router.get('/api/products', authenticate, productController.getProducts);
-router.get(
-	'/api/get-order',
-	authorize([ROLES.ADMIN]),
-	authenticate,
-	productController.getOrder
-);
+router.get('/api/get-order', authenticate, productController.getOrder);
 
 module.exports = router;
