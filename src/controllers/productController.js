@@ -144,7 +144,9 @@ const orderProduct = async (req, res, next) => {
 	}
 };
 const getOrder = async (req, res, next) => {
-	const order = await Order.find();
+	const userId = req.query.userId;
+
+	const order = await Order.find({ 'customer.idUser': userId });
 	return res.json({ status: 200, order });
 };
 const createProduct = async (req, res) => {
