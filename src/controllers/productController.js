@@ -216,6 +216,7 @@ const updateProduct = async (req, res) => {
 			name: name,
 			price: price,
 			long_desc,
+			category,
 			short_desc,
 			img1: image?.image1,
 			img2: image?.image2,
