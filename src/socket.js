@@ -5,7 +5,7 @@ function setupSocket(server) {
 	const io = socketIo(server, {
 		cors: {
 			origin: [
-				'https://admin-app-tmdt.vercel.app',
+				'https://admin-dashboard-rho-snowy.vercel.app',
 				'https://client-app-tmdt.vercel.app',
 			], // Replace with the appropriate port of your client-app
 			methods: ['GET', 'POST'],

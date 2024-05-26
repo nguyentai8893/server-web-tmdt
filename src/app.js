@@ -29,7 +29,7 @@ app.use(morgan('combined', { stream: accessLogStream }));
 app.use(
 	cors({
 		origin: [
-			'https://admin-app-tmdt.vercel.app',
+			'https://admin-dashboard-rho-snowy.vercel.app',
 			'https://client-app-tmdt.vercel.app',
 		],
 		methods: ['GET', 'POST', 'PUT', 'DELETE'],
