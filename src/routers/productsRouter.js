@@ -12,9 +12,14 @@ router.post('/api/order-product', authenticate, productController.orderProduct);
 router.post(
 	'/api/update-product',
 	authenticate,
+	authorize([ROLES.ADMIN]),
 	productController.updateProductCart
 );
-router.post('/api/add-product', productController.createProduct);
+router.post(
+	'/api/add-product',
+	authorize([ROLES.ADMIN]),
+	productController.createProduct
+);
 router.post(
 	'/api/upload-image',
 	authorize([ROLES.ADMIN]),
