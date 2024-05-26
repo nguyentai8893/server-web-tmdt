@@ -6,7 +6,6 @@ const { body, validationResult, header } = require('express-validator');
 
 const superAdmin = async (req, res, next) => {
 	const { name, email, password, phone } = req.body;
-	console.log(name);
 	try {
 		// Kiểm tra xem đã có tài khoản super admin trong cơ sở dữ liệu chưa
 		const existingSuperAdmin = await User.findOne({ role: 'superadmin' });
@@ -51,15 +50,12 @@ const superAdmin = async (req, res, next) => {
 };
 const register = async (req, res, next) => {
 	const { name, email, password, phone } = req.body;
-	console.log(name);
 	try {
 		const existingUser = await User.findOne({ userName: name });
 		if (existingUser) {
 			// Nếu userName đã tồn tại, trả về thông báo lỗi
 			return res.json({ message: 'UserName đã tồn tại!', status: false });
 		}
-		// tìm kiếm user theo email
-
 		// Kiểm tra các điều kiện đầu vào
 		if (name.length < 5) {
 			return res.json({
@@ -112,7 +108,7 @@ const register = async (req, res, next) => {
 			newUser,
 		});
 	} catch (error) {
-		console.log('ssssss', error.message);
+		console.log(error.message);
 	}
 };
 const login = async (req, res, next) => {

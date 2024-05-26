@@ -71,8 +71,6 @@ const updateProductCart = async (req, res, next) => {
 			await cartItem.save();
 		}
 		const updateCart = await CartItems.find();
-		console.log(updateCart);
-
 		return res.json({ status: 200, message: 'Update successful', updateCart });
 	} catch (error) {
 		console.error('Error updating quantity:', error);
@@ -113,30 +111,21 @@ const orderProduct = async (req, res, next) => {
 			const productInStock = await Products.findById({
 				_id: product.idProduct,
 			});
-			console.log(product.quantity);
-			console.log(productInStock);
-
 			if (!productInStock) {
 			}
 			if (productInStock.quantity < product.quantity) {
-				console.log(' k đủ sl');
 			}
 			productInStock.quantity -= product.quantity;
 			await productInStock.save();
 		}
 		// Tạo một bản ghi mới trong cơ sở dữ liệu đơn hàng
 		const newOrder = await Order.create(orderData);
-
 		// Gửi email xác nhận đơn hàng cho khách hàng
 		await sendOrderConfirmationEmail(newOrder);
-
 		const order = await Order.find();
 		return res.status(201).json({ success: true, order });
 	} catch (error) {
 		// Xử lý lỗi nếu có lỗi xảy ra trong quá trình xử lý yêu cầu
-		console.log(' k đủ sl');
-
-		console.error('An error occurred while processing the request:', error);
 		res.status(500).json({
 			success: false,
 			error: 'An error occurred while processing the request',
@@ -156,13 +145,15 @@ const getOrders = async (req, res, next) => {
 const createProduct = async (req, res) => {
 	try {
 		console.log('ok', req.body);
-		const { name, price, category, short_desc, long_desc, image } = req.body;
+		const { name, price, category, short_desc, long_desc, image, quantity } =
+			req.body;
 		const newProduct = new Products({
 			category,
 			img1: image[0],
 			img2: image[1],
 			img3: image[2],
 			img4: image[3],
+			quantity,
 			long_desc,
 			name,
 			price,
@@ -218,6 +209,7 @@ const updateProduct = async (req, res) => {
 			long_desc,
 			category,
 			short_desc,
+			quantity,
 			img1: image?.image1,
 			img2: image?.image2,
 			img3: image?.image3,
