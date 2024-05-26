@@ -204,7 +204,8 @@ const deleteProduct = async (req, res) => {
 };
 const updateProduct = async (req, res) => {
 	const productId = req.params.id;
-	const { name, price, long_desc, short_desc, category, image } = req.body;
+	const { name, price, long_desc, short_desc, category, image, quantity } =
+		req.body;
 	//cập nhập sản phẩm
 	const updatedProduct = await Products.findByIdAndUpdate(
 		productId,

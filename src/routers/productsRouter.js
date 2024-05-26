@@ -12,7 +12,6 @@ router.post('/api/order-product', authenticate, productController.orderProduct);
 router.post(
 	'/api/update-product',
 	authenticate,
-	authorize([ROLES.ADMIN]),
 	productController.updateProductCart
 );
 router.post(
@@ -28,7 +27,6 @@ router.post(
 );
 router.post(
 	'/api/update-product/:id',
-	authorize([ROLES.ADMIN]),
 	authorize([ROLES.ADMIN]),
 	productController.updateProduct
 );
