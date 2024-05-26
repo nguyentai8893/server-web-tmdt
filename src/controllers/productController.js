@@ -112,8 +112,13 @@ const orderProduct = async (req, res, next) => {
 				_id: product.idProduct,
 			});
 			if (!productInStock) {
+				return res.json({ status: 200, message: 'product not found!' });
 			}
 			if (productInStock.quantity < product.quantity) {
+				return res.json({
+					status: 200,
+					message: 'số lượng sản trong kho không đủ.!',
+				});
 			}
 			productInStock.quantity -= product.quantity;
 			await productInStock.save();
