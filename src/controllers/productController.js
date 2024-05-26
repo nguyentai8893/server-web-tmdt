@@ -159,10 +159,10 @@ const createProduct = async (req, res) => {
 		const { name, price, category, short_desc, long_desc, image } = req.body;
 		const newProduct = new Products({
 			category,
-			img1: image.image1,
-			img2: image.image2,
-			img3: image.image3,
-			img4: image.image4,
+			img1: image[0],
+			img2: image[1],
+			img3: image[2],
+			img4: image[3],
 			long_desc,
 			name,
 			price,
