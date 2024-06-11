@@ -1,4 +1,3 @@
-const Message = require('../model/Message');
 const Rooms = require('../model/Rooms');
 
 const getMessage = async (req, res) => {
