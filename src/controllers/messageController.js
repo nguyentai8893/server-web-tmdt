@@ -14,10 +14,6 @@ const getMessage = async (req, res) => {
 	}
 };
 
-// const getRooms = async (req, res) => {
-// 	const rooms = await Rooms.find();
-// 	res.json(rooms);
-// };
 const getRoom = async (req, res) => {
 	try {
 		const rooms = await Rooms.find().populate('messages');
